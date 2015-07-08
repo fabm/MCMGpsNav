@@ -1,0 +1,9 @@
+{
+  "type": "registosAApagar",
+  "registoAApagarList": [
+    {
+      "tabela": "ENCOMENDA",
+      "id": 7
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+    "localidadeRestList": [
+      {
+        "id": 5924,
+        "localidade": "MANGUALDE",
+        "codPostal": 3530000
+      },
+      {
+        "id": 5925,
+        "localidade": "MANGUALDE DA SERRA",
+        "codPostal": 6290111
+      },
+      {
+        "id": 6130,
+        "localidade": "MORTÁGUA",
+        "codPostal": 3450000
+      },
+      {
+        "id": 6138,
+        "localidade": "MOSTEIRO DE FRÁGUAS",
+        "codPostal": 3460302
+      },
+      {
+        "id": 6205,
+        "localidade": "NOGUEIRA BGC",
+        "codPostal": 5300701
+      },
+      {
+        "id": 6206,
+        "localidade": "NOGUEIRA DA MONTANHA",
+        "codPostal": 5400652
+      },
+      {
+        "id": 6207,
+        "localidade": "NOGUEIRA LSD",
+        "codPostal": 4620000
+      },
+      {
+        "id": 6208,
+        "localidade": "NOGUEIRA MAI",
+        "codPostal": 4470000
+      },
+      {
+        "id": 6209,
+        "localidade": "NOGUEIRA PTB",
+        "codPostal": 4980000
+      },
+      {
+        "id": 6210,
+        "localidade": "NOGUEIRA VCT",
+        "codPostal": 4900235
+      },
+      {
+        "id": 6211,
+        "localidade": "NOGUEIRA VNC",
+        "codPostal": 4920100
+      },
+      {
+        "id": 6212,
+        "localidade": "NOGUEIRA VRL",
+        "codPostal": 5000391
+      },
+      {
+        "id": 6267,
+        "localidade": "ORIZ (SÃO MIGUEL)",
+        "codPostal": 4730540
+      },
+      {
+        "id": 6309,
+        "localidade": "PAÇOS DE VILHARIGUES",
+        "codPostal": 3670000
+      },
+      {
+        "id": 6371,
+        "localidade": "PARADELA DE GUIÃES",
+        "codPostal": 5060161
+      },
+      {
+        "id": 6421,
+        "localidade": "PEDRO MIGUEL",
+        "codPostal": 9900000
+      },
+      {
+        "id": 6451,
+        "localidade": "PENHA DE ÁGUIA",
+        "codPostal": 6440221
+      },
+      {
+        "id": 6488,
+        "localidade": "PEROGUARDA",
+        "codPostal": 7900000
+      },
+      {
+        "id": 6493,
+        "localidade": "PESO DA RÉGUA",
+        "codPostal": 5050000
+      },
+      {
+        "id": 6494,
+        "localidade": "PESSEGUEIRO",
+        "codPostal": 3320000
+      },
+      {
+        "id": 6495,
+        "localidade": "PESSEGUEIRO DO VOUGA",
+        "codPostal": 3740000
+      },
+      {
+        "id": 6628,
+        "localidade": "PÓVOA DE SÃO MIGUEL",
+        "codPostal": 7885000
+      },
+      {
+        "id": 6636,
+        "localidade": "PRADO (SÃO MIGUEL)",
+        "codPostal": 4730000
+      },
+      {
+        "id": 6726,
+        "localidade": "REGUEIRA DE PONTES",
+        "codPostal": 2400927
+      },
+      {
+        "id": 6727,
+        "localidade": "REGUENGA",
+        "codPostal": 4780000
+      },
+      {
+        "id": 6728,
+        "localidade": "REGUENGO",
+        "codPostal": 7300405
+      },
+      {
+        "id": 6729,
+        "localidade": "REGUENGO DO FETAL",
+        "codPostal": 2440208
+      },
+      {
+        "id": 6730,
+        "localidade": "REGUENGO GRANDE",
+        "codPostal": 2530000
+      },
+      {
+        "id": 6773,
+        "localidade": "RIBEIRA DE FRÁGUAS",
+        "codPostal": 3850711
+      },
+      {
+        "id": 6862,
+        "localidade": "SABROSO DE AGUIAR",
+        "codPostal": 5450000
+      },
+      {
+        "id": 6865,
+        "localidade": "SABUGUEIRO ARL",
+        "codPostal": 7040000
+      },
+      {
+        "id": 6866,
+        "localidade": "SABUGUEIRO SEI",
+        "codPostal": 6270151
+      },
+      {
+        "id": 6878,
+        "localidade": "SALGUEIRAIS",
+        "codPostal": 6360150
+      },
+      {
+        "id": 6879,
+        "localidade": "SALGUEIRO",
+        "codPostal": 6230618
+      },
+      {
+        "id": 6880,
+        "localidade": "SALGUEIRO DO CAMPO",
+        "codPostal": 6000631
+      },
+      {
+        "id": 6919,
+        "localidade": "SANGUEDO",
+        "codPostal": 4535000
+      },
+      {
+        "id": 6920,
+        "localidade": "SANGUINHEIRA",
+        "codPostal": 3060816
+      },
+      {
+        "id": 6990,
+        "localidade": "SANTIAGO DA GUARDA",
+        "codPostal": 3240690
+      },
+      {
+        "id": 7106,
+        "localidade": "SÃO MIGUEL CARREIRAS",
+        "codPostal": 4730000
+      },
+      {
+        "id": 7107,
+        "localidade": "SÃO MIGUEL DE ACHA",
+        "codPostal": 6060511
+      },
+      {
+        "id": 7108,
+        "localidade": "SÃO MIGUEL JARMELO",
+        "codPostal": 6300205
+      },
+      {
+        "id": 7109,
+        "localidade": "SÃO MIGUEL SEIDE",
+        "codPostal": 4760000
+      },
+      {
+        "id": 7192,
+        "localidade": "SEGUDE",
+        "codPostal": 4950000
+      },
+      {
+        "id": 7193,
+        "localidade": "SEGURA",
+        "codPostal": 6060521
+      },
+      {
+        "id": 7242,
+        "localidade": "SERRA DE ÁGUA",
+        "codPostal": 9350000
+      },
+      {
+        "id": 7265,
+        "localidade": "SILGUEIROS",
+        "codPostal": 3500000
+      },
+      {
+        "id": 7293,
+        "localidade": "SOBRAL DE SÃO MIGUEL",
+        "codPostal": 6225000
+      },
+      {
+        "id": 7326,
+        "localidade": "SOUTELO DE AGUIAR",
+        "codPostal": 5450265
+      },
+      {
+        "id": 7406,
+        "localidade": "TORGUEDA",
+        "codPostal": 5000747
+      },
+      {
+        "id": 7428,
+        "localidade": "TOUGUES",
+        "codPostal": 4480480
+      }
+    ]
+}

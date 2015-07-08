@@ -1,0 +1,12 @@
+{
+  "contribuinte": 1234,
+  "nome": "Francisco Monteiro",
+  "morada": "Guarda",
+  "porta": "2Esq",
+  "data-nascimento": "1979-05-25T00:00:00.000Z",
+  "email": "francisco@sapo.pt",
+  "contacto": "969999999",
+  "localidade": 6300559,
+  "login": "francisco",
+  "password": "francisco"
+}

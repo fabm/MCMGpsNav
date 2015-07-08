@@ -1,0 +1,45 @@
+//todo actualizar data de entrega no objeto de entrada e saida do webservice
+{
+  "type": "resMinhasEncomendasDetalhe",
+  "listaEncomendasDetalheXmls": [
+    {
+      "id": 1,
+      "serverId":1,
+      "dataCriacao": "2015-01-28T23:41:46Z",
+      "dataEntrega": "2015-01-31T00:00:00Z",
+      "estado": 0,
+      "produtosEncomendados": [
+        {
+          "idProduto": 1,
+          "quantidade": 2,
+          "preco": 50
+        },
+        {
+          "idProduto": 2,
+          "quantidade": 2,
+          "preco": 50
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "serverId":2,
+      "dataCriacao": "2015-01-28T23:35:22Z",
+      "dataEntrega": "2015-01-30T23:35:22Z",
+
+      "estado": 0,
+      "produtosEncomendados": [
+        {
+          "idProduto": 1,
+          "quantidade": 1,
+          "preco": 48
+        },
+        {
+          "idProduto": 2,
+          "quantidade": 2,
+          "preco": 48
+        }
+      ]
+    }
+  ]
+}

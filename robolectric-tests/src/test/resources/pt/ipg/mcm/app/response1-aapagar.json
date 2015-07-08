@@ -1,0 +1,12 @@
+{
+  "registoAApagarRestList": [
+    {
+      "tabela": "ENCOMENDA",
+      "id": 2
+    },
+    {
+      "tabela": "PRODUTO",
+      "id": 8
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "categorias": {
+    "categoria": [
+      {
+        "nome": "pão integral",
+        "descricao": "pão feito com farinha integral",
+        "id": 3
+      }
+    ]
+  },
+  "maxVersao": 15
+}

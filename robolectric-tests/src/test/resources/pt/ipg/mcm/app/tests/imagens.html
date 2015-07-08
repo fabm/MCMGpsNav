@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Imagens base 64</title>
+</head>
+
+<body>
+<script src="jquery-2.1.3.min.js"></script>
+<script>
+    $.ajax({
+        url: 'imagens.json',
+        async: false,
+        dataType: 'json',
+        success: function (response) {
+            var img = $("<img src='data:image;base64," + response.imagens[1] + "'/>");
+            $("body").append(img);
+        }
+    });
+</script>
+</body>
+
+</html>

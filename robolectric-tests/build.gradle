@@ -1,0 +1,23 @@
+apply plugin: 'java'
+
+dependencies {
+    def androidModule = project(':app')
+
+    testCompile project(path: ':app', configuration: 'debugCompile')
+
+    def debugVariant = androidModule.android.applicationVariants.find({it.name == 'debug'})
+    testCompile debugVariant.javaCompile.classpath
+    testCompile debugVariant.javaCompile.outputs.files
+    testCompile files(androidModule.plugins.findPlugin("com.android.application").getBootClasspath())
+
+    testCompile 'junit:junit:4.11'
+    testCompile 'com.stanfy:gson-xml-java:0.1.7'
+    testCompile 'org.robolectric:robolectric:2.2'
+    testCompile 'org.mockito:mockito-all:1.10.19'
+}
+
+tasks.withType(Test) {
+    scanForTestClasses = false
+    include "pt/ipg/mcm/app/tests/*Test.class"
+    exclude "pt/ipg/mcm/app/instances/DelegatedApp4Tests.class"
+}

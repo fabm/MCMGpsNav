@@ -1,0 +1,15 @@
+{
+  "categorias": [
+    {
+      "nome": "pão centeio",
+      "descricao": "pão com farinha de centeio",
+      "id": 1
+    },
+    {
+      "nome": "pão de trigo",
+      "descricao": "pão com farinha de trigo",
+      "id": 2
+    }
+  ],
+  "maxVersao": 10
+}

@@ -1,0 +1,254 @@
+{
+    "localidadeRestList": [
+      {
+        "id": 4070,
+        "localidade": "ÁGUA DE ALTO",
+        "codPostal": 9680000
+      },
+      {
+        "id": 4071,
+        "localidade": "ÁGUA DE PAU",
+        "codPostal": 9560000
+      },
+      {
+        "id": 4072,
+        "localidade": "ÁGUA DE PENA",
+        "codPostal": 9200000
+      },
+      {
+        "id": 4073,
+        "localidade": "ÁGUA LONGA",
+        "codPostal": 4780000
+      },
+      {
+        "id": 4074,
+        "localidade": "ÁGUA RETORTA",
+        "codPostal": 9650000
+      },
+      {
+        "id": 4075,
+        "localidade": "ÁGUA REVÊS E CASTRO",
+        "codPostal": 5430000
+      },
+      {
+        "id": 4076,
+        "localidade": "AGUADA DE BAIXO",
+        "codPostal": 3750031
+      },
+      {
+        "id": 4077,
+        "localidade": "AGUADA DE CIMA",
+        "codPostal": 3750041
+      },
+      {
+        "id": 4078,
+        "localidade": "AGUALONGA",
+        "codPostal": 4940011
+      },
+      {
+        "id": 4079,
+        "localidade": "AGUALVA",
+        "codPostal": 9760000
+      },
+      {
+        "id": 4081,
+        "localidade": "ÁGUAS",
+        "codPostal": 6090000
+      },
+      {
+        "id": 4082,
+        "localidade": "ÁGUAS BELAS FZZ",
+        "codPostal": 2240000
+      },
+      {
+        "id": 4083,
+        "localidade": "ÁGUAS BELAS SBG",
+        "codPostal": 6320011
+      },
+      {
+        "id": 4084,
+        "localidade": "ÁGUAS BOAS",
+        "codPostal": 3560010
+      },
+      {
+        "id": 4085,
+        "localidade": "ÁGUAS DE MOURA",
+        "codPostal": 2965000
+      },
+      {
+        "id": 4086,
+        "localidade": "ÁGUAS FRIAS",
+        "codPostal": 5400601
+      },
+      {
+        "id": 4087,
+        "localidade": "ÁGUAS SANTAS MAI",
+        "codPostal": 4445000
+      },
+      {
+        "id": 4088,
+        "localidade": "ÁGUAS SANTAS PVL",
+        "codPostal": 4830000
+      },
+      {
+        "id": 4090,
+        "localidade": "AGUDA",
+        "codPostal": 3260021
+      },
+      {
+        "id": 4091,
+        "localidade": "ÁGUEDA",
+        "codPostal": 3750000
+      },
+      {
+        "id": 4092,
+        "localidade": "AGUIÃ",
+        "codPostal": 4970000
+      },
+      {
+        "id": 4093,
+        "localidade": "AGUIAR BCL",
+        "codPostal": 4750000
+      },
+      {
+        "id": 4094,
+        "localidade": "AGUIAR DA BEIRA",
+        "codPostal": 3570000
+      },
+      {
+        "id": 4095,
+        "localidade": "AGUIAR DE SOUSA",
+        "codPostal": 4585005
+      },
+      {
+        "id": 4096,
+        "localidade": "AGUIAR VNT",
+        "codPostal": 7090000
+      },
+      {
+        "id": 4097,
+        "localidade": "AGUIEIRA",
+        "codPostal": 3525000
+      },
+      {
+        "id": 4098,
+        "localidade": "AGUIEIRAS",
+        "codPostal": 5385011
+      },
+      {
+        "id": 4099,
+        "localidade": "AGUIM",
+        "codPostal": 3780621
+      },
+      {
+        "id": 4181,
+        "localidade": "ALGUBER",
+        "codPostal": 2550012
+      },
+      {
+        "id": 4198,
+        "localidade": "ALMALAGUÊS",
+        "codPostal": 3040000
+      },
+      {
+        "id": 4292,
+        "localidade": "ANGUEIRA",
+        "codPostal": 5230020
+      },
+      {
+        "id": 4400,
+        "localidade": "ATOUGUIA",
+        "codPostal": 2490000
+      },
+      {
+        "id": 4401,
+        "localidade": "ATOUGUIA DA BALEIA",
+        "codPostal": 2520000
+      },
+      {
+        "id": 4454,
+        "localidade": "BAGUEIXE",
+        "codPostal": 5340040
+      },
+      {
+        "id": 4455,
+        "localidade": "BAGUIM DO MONTE",
+        "codPostal": 4435000
+      },
+      {
+        "id": 4456,
+        "localidade": "BAGUNTE",
+        "codPostal": 4480000
+      },
+      {
+        "id": 4476,
+        "localidade": "BARÃO DE SÃO MIGUEL",
+        "codPostal": 8650000
+      },
+      {
+        "id": 4592,
+        "localidade": "BORNES DE AGUIAR",
+        "codPostal": 5450130
+      },
+      {
+        "id": 4617,
+        "localidade": "BROGUEIRA",
+        "codPostal": 2350052
+      },
+      {
+        "id": 4775,
+        "localidade": "CARANGUEJEIRA",
+        "codPostal": 2410694
+      },
+      {
+        "id": 4811,
+        "localidade": "CARREGUEIRA",
+        "codPostal": 2140000
+      },
+      {
+        "id": 4812,
+        "localidade": "CARREGUEIROS",
+        "codPostal": 2305204
+      },
+      {
+        "id": 4997,
+        "localidade": "COGULA",
+        "codPostal": 6420341
+      },
+      {
+        "id": 5066,
+        "localidade": "COUTO (SÃO MIGUEL)",
+        "codPostal": 4780000
+      },
+      {
+        "id": 5137,
+        "localidade": "DOMINGUIZO",
+        "codPostal": 6200000
+      },
+      {
+        "id": 5291,
+        "localidade": "FELGUEIRAS",
+        "codPostal": 4610000
+      },
+      {
+        "id": 5292,
+        "localidade": "FELGUEIRAS FAF",
+        "codPostal": 4820405
+      },
+      {
+        "id": 5293,
+        "localidade": "FELGUEIRAS RSD",
+        "codPostal": 4660000
+      },
+      {
+        "id": 5294,
+        "localidade": "FELGUEIRAS TMC",
+        "codPostal": 5160091
+      },
+      {
+        "id": 5303,
+        "localidade": "FERRAGUDO",
+        "codPostal": 8400000
+      }
+    ]
+}

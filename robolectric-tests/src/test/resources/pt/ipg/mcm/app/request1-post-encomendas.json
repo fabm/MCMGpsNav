@@ -1,0 +1,18 @@
+{
+  "encomendas": {
+    "encomenda": [
+      {
+        "clientId": 123,
+        "dataEntrega": "2015-04-09 22:47",
+        "produtos": {
+          "produto": [
+            {
+              "quantidade": 22,
+              "idProduto": 11
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
