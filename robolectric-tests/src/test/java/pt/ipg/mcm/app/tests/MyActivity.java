@@ -3,7 +3,7 @@ package pt.ipg.mcm.app.tests;
 import android.content.Context;
 import android.view.View;
 import org.robolectric.Robolectric;
-import pt.ipg.mcm.mcmgpsnav.app.MainActivity;
+import pt.ipg.mcm.mcmgpsnav.app.activities.MainActivity;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
