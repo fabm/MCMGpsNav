@@ -37,6 +37,7 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
     private Location nextLocation;
     private float lastAngle;
     private SensorManager sensorManager;
+    private int count = 0;
     private int state;
     private Timer timer;
     private TimerTask schedule;
@@ -146,7 +147,10 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
 
     private void correctDirection() {
         final float degrees = Utils.normalizeAngle(lastAngle, lastLocation.bearingTo(nextLocation));
-        if (degrees < 2) {
+        if(nextLocation == null){
+            return;
+        }
+        if (degrees-lastLocation.bearingTo(nextLocation) < 10) {
             state = GpsNavStatus.MOVE;
             writeAdk("" + GpsNavStatus.MOVE + degrees);
         } else {
@@ -170,7 +174,7 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
     @Override
     public void onLocationChanged(Location location) {
         lastLocation = location;
-        if (nextLocation == null || location.distanceTo(nextLocation) < 1f) {
+        if (nextLocation == null || location.distanceTo(nextLocation) < 8f) {
             writeAdk("" + GpsNavStatus.STOP);
             state = GpsNavStatus.STOP;
         }
@@ -216,6 +220,7 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
     }
 
     public void startTimer() {
+
         initTimerTask();
         timer.schedule(schedule, 1000, 1000);
     }
@@ -227,8 +232,10 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
 
                 //use a handler to run a toast that shows the current timestamp
                 handler.post(new Runnable() {
+
                     public void run() {
                         final DaoSession daoSession = fluentBD.getDaoSession();
+                        count++;
                         if (lastLocation != null) {
                             daoSession.runInTx(new Runnable() {
                                 @Override
@@ -236,6 +243,10 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
                                     insertCoordAndCompass(daoSession);
                                 }
                             });
+                        }
+                        if(count>=30){
+                            correctDirection();
+                            count = 0;
                         }
                     }
                 });
