@@ -8,17 +8,15 @@ import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 import com.google.android.gms.maps.model.LatLng;
-import org.json.JSONException;
 import pt.ipg.mcm.mcmgpsnav.app.GpsNavStatus;
 import pt.ipg.mcm.mcmgpsnav.app.R;
 import pt.ipg.mcm.mcmgpsnav.app.Utils;
@@ -94,15 +92,24 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
 
                 fluentBD.save();
 
-/*
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, fluentBD.serializeToJson());
-                sendIntent.setType("text/json");
-                if (sendIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(sendIntent);
-                }
-*/
+
+                AsyncTask<Void, Void, Void> at = new AsyncTask<Void, Void, Void>() {
+                    @Override
+                    protected Void doInBackground(Void... params) {
+                        Intent sendIntent = new Intent();
+                        sendIntent.setAction(Intent.ACTION_SEND);
+                        sendIntent.putExtra(Intent.EXTRA_TEXT, fluentBD.serializeToJson());
+                        sendIntent.setType("text/json");
+                        if (sendIntent.resolveActivity(getPackageManager()) != null) {
+                            startActivity(sendIntent);
+                        }
+                        return null;
+                    }
+                };
+
+                at.execute();
+
+
             }
         });
 
@@ -193,6 +200,11 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
         lastAngle = Math.round(event.values[0]);
         TextView tvLatitude = (TextView) findViewById(R.id.tvCurrentDegrees);
         tvLatitude.setText("" + event.values[0]);
+
+        TextView tvDegreesToNext = (TextView) findViewById(R.id.tvMainDegreesToNext);
+        if (nextLocation != null) {
+            tvDegreesToNext.setText("" + lastLocation.bearingTo(nextLocation));
+        }
     }
 
     @Override
@@ -243,6 +255,8 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
             coord.setDistanceToNext(lastLocation.distanceTo(nextLocation));
             coord.setNextLat(nextLocation.getLatitude());
             coord.setNextLon(nextLocation.getLongitude());
+            TextView tvMainDistance = (TextView) findViewById(R.id.tvMainDistance);
+            tvMainDistance.setText(""+lastLocation.distanceTo(nextLocation));
         }
 
         daoSession.getCoordAndCompassDao().insert(coord);
@@ -274,5 +288,13 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
         nextLocation.setLatitude(latLng.latitude);
         nextLocation.setLongitude(latLng.longitude);
         nextLocation.setTime(System.currentTimeMillis());
+
+        TextView tvLatNext = (TextView) findViewById(R.id.tvMainLatNext);
+        tvLatNext.setText("" + nextLocation.getLatitude());
+
+
+        TextView tvLonNext = (TextView) findViewById(R.id.tvMainLonNext);
+        tvLonNext.setText("" + nextLocation.getLongitude());
+
     }
 }
