@@ -26,6 +26,7 @@ public class CoordArrayAdapter extends ArrayAdapter<CoordAndCompass> {
         LayoutInflater inflater = (LayoutInflater) context
             .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.coord_row_layout, parent, false);
+
         TextView tvDegrees = (TextView) rowView.findViewById(R.id.tvDegrees);
         tvDegrees.setText("" + values.get(position).getDegrees());
         TextView tvLat = (TextView) rowView.findViewById(R.id.tvLongitude);
@@ -34,6 +35,16 @@ public class CoordArrayAdapter extends ArrayAdapter<CoordAndCompass> {
         tvLong.setText("" + values.get(position).getLongitude());
         TextView tvDateTime = (TextView) rowView.findViewById(R.id.tvDateTime);
         tvDateTime.setText(values.get(position).getDate().toString());
+
+        TextView tvLatNext = (TextView) rowView.findViewById(R.id.tvLatNext);
+        tvLatNext.setText(""+values.get(position).getNextLat());
+        TextView tvLonNext = (TextView) rowView.findViewById(R.id.tvLonNext);
+        tvLonNext.setText(""+values.get(position).getNextLon());
+        TextView tvDegreesToNext = (TextView) rowView.findViewById(R.id.tvDegreesToNext);
+        tvDegreesToNext.setText(""+values.get(position).getDegreesToNext());
+        TextView tvDistanceNext = (TextView) rowView.findViewById(R.id.tvDistanceNext);
+        tvDistanceNext.setText(""+values.get(position).getDistanceToNext());
+
 
         return rowView;
     }

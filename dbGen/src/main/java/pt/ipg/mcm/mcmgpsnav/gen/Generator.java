@@ -9,12 +9,16 @@ public class Generator {
         Schema schema = new Schema(1, "pt.ipg.mcm.mcmgpsnav.app.db.gen");
 
 
-        Entity note = schema.addEntity("CoordAndCompass");
-        note.addIdProperty();
-        note.addDoubleProperty("degrees").notNull();
-        note.addDoubleProperty("longitude").notNull();
-        note.addDoubleProperty("latitude").notNull();
-        note.addDateProperty("date").notNull();
+        Entity coordAndCompass = schema.addEntity("CoordAndCompass");
+        coordAndCompass.addIdProperty();
+        coordAndCompass.addDoubleProperty("degrees").notNull();
+        coordAndCompass.addDoubleProperty("longitude").notNull();
+        coordAndCompass.addDoubleProperty("latitude").notNull();
+        coordAndCompass.addFloatProperty("degreesToNext");
+        coordAndCompass.addDoubleProperty("nextLon");
+        coordAndCompass.addDoubleProperty("nextLat");
+        coordAndCompass.addFloatProperty("distanceToNext");
+        coordAndCompass.addDateProperty("date").notNull();
 
         new DaoGenerator().generateAll(schema, args[0]);
     }

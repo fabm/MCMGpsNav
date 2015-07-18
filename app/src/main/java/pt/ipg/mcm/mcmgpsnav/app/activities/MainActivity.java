@@ -49,11 +49,6 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
     @Override
     protected void doOnCreate(Bundle savedInstanceState) {
 
-        nextLocation = new Location(LocationManager.GPS_PROVIDER);
-        nextLocation.setLatitude(40.542017);
-        nextLocation.setLongitude(-7.281506);
-        nextLocation.setTime(System.currentTimeMillis());
-
         setContentView(R.layout.activity_main);
         initLocationListener();
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -89,7 +84,6 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
                 switchTimer(isChecked);
             }
         });
-        timer = new Timer();
         switchTimer(tgActivarTimer.isChecked());
 
         Button btExportar = (Button) findViewById(R.id.btExportar);
@@ -97,17 +91,18 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
         btExportar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                fluentBD.save();
+
+/*
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                try {
-                    sendIntent.putExtra(Intent.EXTRA_TEXT, fluentBD.serilizeJson());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                sendIntent.putExtra(Intent.EXTRA_TEXT, fluentBD.serializeToJson());
                 sendIntent.setType("text/json");
                 if (sendIntent.resolveActivity(getPackageManager()) != null) {
                     startActivity(sendIntent);
                 }
+*/
             }
         });
 
@@ -115,7 +110,7 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
         btDefDestino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,MapsActivity.class);
+                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
                 startActivityForResult(intent, 2);
             }
         });
@@ -130,7 +125,9 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
     }
 
     protected void stopTimer() {
-        timer.cancel();
+        if (timer != null) {
+            timer.cancel();
+        }
     }
 
     @Override
@@ -166,7 +163,7 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
     @Override
     public void onLocationChanged(Location location) {
         lastLocation = location;
-        if (location.distanceTo(nextLocation) < 1f) {
+        if (nextLocation == null || location.distanceTo(nextLocation) < 1f) {
             writeAdk("" + GpsNavStatus.STOP);
             state = GpsNavStatus.STOP;
         }
@@ -212,6 +209,7 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
     }
 
     private void initTimerTask() {
+        timer = new Timer();
         schedule = new TimerTask() {
             public void run() {
 
@@ -220,16 +218,10 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
                     public void run() {
                         final DaoSession daoSession = fluentBD.getDaoSession();
                         if (lastLocation != null) {
-
                             daoSession.runInTx(new Runnable() {
                                 @Override
                                 public void run() {
-                                    CoordAndCompass coord = new CoordAndCompass();
-                                    coord.setDate(new Date());
-                                    coord.setDegrees(lastAngle);
-                                    coord.setLatitude(lastLocation.getLatitude());
-                                    coord.setLongitude(lastLocation.getLongitude());
-                                    daoSession.getCoordAndCompassDao().insert(coord);
+                                    insertCoordAndCompass(daoSession);
                                 }
                             });
                         }
@@ -237,6 +229,23 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
                 });
             }
         };
+    }
+
+    private void insertCoordAndCompass(DaoSession daoSession) {
+        CoordAndCompass coord = new CoordAndCompass();
+        coord.setDate(new Date());
+        coord.setDegrees(lastAngle);
+        coord.setLatitude(lastLocation.getLatitude());
+        coord.setLongitude(lastLocation.getLongitude());
+
+        if (nextLocation != null) {
+            coord.setDegreesToNext(lastLocation.bearingTo(nextLocation));
+            coord.setDistanceToNext(lastLocation.distanceTo(nextLocation));
+            coord.setNextLat(nextLocation.getLatitude());
+            coord.setNextLon(nextLocation.getLongitude());
+        }
+
+        daoSession.getCoordAndCompassDao().insert(coord);
     }
 
     @Override
@@ -260,6 +269,10 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         LatLng latLng = data.getParcelableExtra("latLng");
-        Toast.makeText(this,"lat:"+latLng.latitude+":long:"+latLng.longitude,Toast.LENGTH_LONG).show();
+
+        nextLocation = new Location(LocationManager.GPS_PROVIDER);
+        nextLocation.setLatitude(latLng.latitude);
+        nextLocation.setLongitude(latLng.longitude);
+        nextLocation.setTime(System.currentTimeMillis());
     }
 }

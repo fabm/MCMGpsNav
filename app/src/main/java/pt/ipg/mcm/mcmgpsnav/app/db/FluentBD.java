@@ -2,8 +2,12 @@ package pt.ipg.mcm.mcmgpsnav.app.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
+import android.os.Environment;
 import android.os.Message;
+import android.util.Log;
 import android.util.Xml;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,6 +16,10 @@ import pt.ipg.mcm.mcmgpsnav.app.db.gen.CoordAndCompass;
 import pt.ipg.mcm.mcmgpsnav.app.db.gen.DaoMaster;
 import pt.ipg.mcm.mcmgpsnav.app.db.gen.DaoSession;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.util.Calendar;
 import java.util.Date;
@@ -52,11 +60,11 @@ public class FluentBD {
 
         List<CoordAndCompass> all = getDaoSession().getCoordAndCompassDao().loadAll();
 
-        for(CoordAndCompass coordAndCompass:all){
+        for (CoordAndCompass coordAndCompass : all) {
             final JSONObject coord = new JSONObject();
-            coord.put("lon",coordAndCompass.getLongitude());
-            coord.put("lat",coordAndCompass.getLatitude());
-            coord.put("degrees",coordAndCompass.getDegrees());
+            coord.put("lon", coordAndCompass.getLongitude());
+            coord.put("lat", coordAndCompass.getLatitude());
+            coord.put("degrees", coordAndCompass.getDegrees());
             final JSONObject dateTime = new JSONObject();
             final Calendar date = Calendar.getInstance();
             date.setTime(coordAndCompass.getDate());
@@ -73,7 +81,6 @@ public class FluentBD {
         jsonObject.put("coords", coords);
         return jsonObject.toString();
     }
-
 
 
     public String serializeXml() {
@@ -112,8 +119,42 @@ public class FluentBD {
         }
     }
 
+    public String serializeToJson() {
+        ObjectMapper mapper = new ObjectMapper();
+        List<CoordAndCompass> loaded = getDaoSession().loadAll(CoordAndCompass.class);
+
+        try {
+            return mapper.writeValueAsString(loaded);
+        } catch (IOException e) {
+            throw new IllegalStateException(e);
+        }
+    }
 
     public void close() {
         db.close();
+    }
+
+
+    public void save() {
+        AsyncTask<Void,Void,Void> at = new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                File file = new File(Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_DOCUMENTS), "test.txt");
+                try {
+                    file.createNewFile();
+                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(file));
+                    outputStreamWriter.write(serializeToJson());
+                    outputStreamWriter.close();
+                } catch (IOException e) {
+                    throw new IllegalStateException(e);
+                }
+                return null;
+            }
+        };
+
+        at.execute();
+
+        // Get the directory for the user's public pictures directory.
     }
 }
