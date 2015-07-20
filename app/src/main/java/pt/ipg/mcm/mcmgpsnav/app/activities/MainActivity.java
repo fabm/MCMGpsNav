@@ -48,6 +48,8 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
     @Override
     protected void doOnCreate(Bundle savedInstanceState) {
 
+        TextView lblbearing = (TextView) findViewById(R.id.lblBearing);
+
         setContentView(R.layout.activity_main);
         initLocationListener();
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -146,16 +148,20 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
     }
 
     private void correctDirection() {
-        final float degrees = Utils.normalizeAngle(lastAngle, lastLocation.bearingTo(nextLocation));
+
         if(nextLocation == null){
+            //writeAdk("X");
             return;
-        }
-        if (degrees-lastLocation.bearingTo(nextLocation) < 10) {
-            state = GpsNavStatus.MOVE;
-            writeAdk("" + GpsNavStatus.MOVE + degrees);
-        } else {
-            state = GpsNavStatus.ROTATE;
-            writeAdk("" + GpsNavStatus.ROTATE + degrees);
+        }else {
+            final float degrees = Utils.normalizeAngle(lastAngle, lastLocation.bearingTo(nextLocation));
+            if (degrees - lastLocation.bearingTo(nextLocation) < 10) {
+                state = GpsNavStatus.MOVE;
+                //writeAdk("" + GpsNavStatus.MOVE + degrees);
+            } else {
+                state = GpsNavStatus.ROTATE;
+                //writeAdk("M");
+                //writeAdk("R" + GpsNavStatus.ROTATE + degrees);
+            }
         }
     }
 
@@ -175,13 +181,38 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
     public void onLocationChanged(Location location) {
         lastLocation = location;
         if (nextLocation == null || location.distanceTo(nextLocation) < 8f) {
-            writeAdk("" + GpsNavStatus.STOP);
+           // writeAdk("" + GpsNavStatus.STOP);
             state = GpsNavStatus.STOP;
         }
         TextView tvLatitude = (TextView) findViewById(R.id.tvLatitude);
         tvLatitude.setText("" + location.getLatitude());
+        TextView bearing = (TextView) findViewById(R.id.lblBearing);
+
         TextView tvLongitude = (TextView) findViewById(R.id.tvLongitude);
         tvLongitude.setText("" + location.getLongitude());
+
+        TextView lblbearing = (TextView) findViewById(R.id.lblBearing);
+        lblbearing.setText("" + location.getBearing());
+
+
+
+        //------------------------------------------------
+
+            Location startingLocation = new Location("starting point");
+            startingLocation.setLatitude(location.getLatitude());
+            startingLocation.setLongitude(location.getLongitude());
+
+            //Get the target location
+            Location endingLocation = new Location("ending point");
+            endingLocation.setLatitude(41.538284);
+            endingLocation.setLongitude(-6.958638);
+
+            //Find the Bearing from current location to next location
+            float targetBearing = startingLocation.bearingTo(endingLocation);
+            bearing.setText("" + Utils.normalizeAngle(lastAngle, startingLocation.bearingTo(endingLocation)));
+
+
+
     }
 
     @Override
@@ -246,6 +277,7 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
                         }
                         if(count>=30){
                             correctDirection();
+                            //writeAdk("M");
                             count = 0;
                         }
                     }
