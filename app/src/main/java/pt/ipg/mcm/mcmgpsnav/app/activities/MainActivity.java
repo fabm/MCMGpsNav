@@ -202,15 +202,18 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
             startingLocation.setLatitude(location.getLatitude());
             startingLocation.setLongitude(location.getLongitude());
 
+        if (nextLocation != null) {
             //Get the target location
             Location endingLocation = new Location("ending point");
-            endingLocation.setLatitude(41.538284);
-            endingLocation.setLongitude(-6.958638);
-
+            //endingLocation.setLatitude(41.538284);
+            //endingLocation.setLongitude(-6.958638);
+            // nextLocation.getLatitude(nextLocation.getLatitude());
+            endingLocation.setLatitude(nextLocation.getLatitude());
+            endingLocation.setLatitude(nextLocation.getLongitude());
             //Find the Bearing from current location to next location
             float targetBearing = startingLocation.bearingTo(endingLocation);
             bearing.setText("" + Utils.normalizeAngle(lastAngle, startingLocation.bearingTo(endingLocation)));
-
+        }
 
 
     }
