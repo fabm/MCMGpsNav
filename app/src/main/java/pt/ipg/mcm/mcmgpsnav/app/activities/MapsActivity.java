@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 import pt.ipg.mcm.mcmgpsnav.app.R;
 
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ import java.util.ArrayList;
 public class MapsActivity extends FragmentActivity {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
-    private ArrayList<LatLng> latLngList;
+    private ArrayList<MarkerOptions> markersList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class MapsActivity extends FragmentActivity {
 
     private void init() {
         setUpMapIfNeeded();
-        latLngList = new ArrayList<LatLng>();
+        markersList = new ArrayList<MarkerOptions>();
     }
 
 
@@ -79,19 +81,19 @@ public class MapsActivity extends FragmentActivity {
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
-                popupChoise(latLng);
+                popupChoise(new MarkerOptions().position(latLng));
             }
         });
     }
 
-    private void popupChoise(final LatLng latLng) {
+    private void popupChoise(final MarkerOptions marker) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
             .setTitle("Opção")
             .setMessage("Adicionar novo botão")
             .setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    addLatLng(latLng);
+                    addMarker(marker);
                 }
             })
             .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -101,7 +103,7 @@ public class MapsActivity extends FragmentActivity {
                 }
             });
 
-        if (!latLngList.isEmpty()) {
+        if (!markersList.isEmpty()) {
             builder.setNeutralButton("Finalizar", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -113,15 +115,29 @@ public class MapsActivity extends FragmentActivity {
         dialog.show();
     }
 
-    private void addLatLng(LatLng latLng) {
-        mMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
-        latLngList.add(latLng);
+    private void addMarker(MarkerOptions marker) {
+        if(markersList.isEmpty()){
+            marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+        }
+        mMap.addMarker(marker);
+        if (!markersList.isEmpty()) {
+            PolylineOptions option = new PolylineOptions();
+            option.add(markersList.get(markersList.size() - 1).getPosition());
+            option.add(marker.getPosition());
+            mMap.addPolyline(option);
+        }
+        markersList.add(marker);
     }
 
     private void returnResult() {
         Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("latLng", latLngList);
+        ArrayList<LatLng> list = new ArrayList<LatLng>();
 
+        for (MarkerOptions marker:markersList){
+            list.add(marker.getPosition());
+        }
+
+        bundle.putParcelableArrayList("latLng", list);
         Intent result = new Intent();
         result.putExtras(bundle);
         setResult(Activity.RESULT_OK, result);
