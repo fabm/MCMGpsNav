@@ -4,20 +4,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-
-import android.widget.Button;
-import android.widget.Toast;
+import android.support.v4.app.FragmentActivity;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import pt.ipg.mcm.mcmgpsnav.app.R;
-import pt.ipg.mcm.mcmgpsnav.app.utils.Reference;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MapsActivity extends FragmentActivity {
 
@@ -80,13 +75,10 @@ public class MapsActivity extends FragmentActivity {
     private void setUpMap() {
         mMap.setMyLocationEnabled(true);
 
-        final Reference<LatLng> latLngReference = new Reference<LatLng>();
-
 
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
-                latLngReference.setRef(latLng);
                 popupChoise(latLng);
             }
         });
@@ -109,7 +101,7 @@ public class MapsActivity extends FragmentActivity {
                 }
             });
 
-        if(!latLngList.isEmpty()){
+        if (!latLngList.isEmpty()) {
             builder.setNeutralButton("Finalizar", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
