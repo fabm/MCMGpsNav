@@ -11,6 +11,7 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -24,6 +25,7 @@ import pt.ipg.mcm.mcmgpsnav.app.db.FluentBD;
 import pt.ipg.mcm.mcmgpsnav.app.db.gen.CoordAndCompass;
 import pt.ipg.mcm.mcmgpsnav.app.db.gen.DaoSession;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Timer;
@@ -328,7 +330,8 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        LatLng latLng = data.getParcelableExtra("latLng");
+        ArrayList<Parcelable> parcelables = data.getParcelableArrayListExtra("latLng");
+        LatLng latLng = (LatLng) parcelables.get(0);
 
         nextLocation = new Location(LocationManager.GPS_PROVIDER);
         nextLocation.setLatitude(latLng.latitude);

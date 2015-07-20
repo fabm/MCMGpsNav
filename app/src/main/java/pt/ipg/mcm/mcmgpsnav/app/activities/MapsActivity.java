@@ -1,32 +1,47 @@
 package pt.ipg.mcm.mcmgpsnav.app.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import android.widget.Button;
+import android.widget.Toast;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import pt.ipg.mcm.mcmgpsnav.app.R;
+import pt.ipg.mcm.mcmgpsnav.app.utils.Reference;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+    private ArrayList<LatLng> latLngList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        setUpMapIfNeeded();
+        init();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        setUpMapIfNeeded();
+        init();
     }
+
+    private void init() {
+        setUpMapIfNeeded();
+        latLngList = new ArrayList<LatLng>();
+    }
+
 
     /**
      * Sets up the map if it is possible to do so (i.e., the Google Play services APK is correctly
@@ -63,20 +78,61 @@ public class MapsActivity extends FragmentActivity {
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
         mMap.setMyLocationEnabled(true);
+
+        final Reference<LatLng> latLngReference = new Reference<LatLng>();
+
+
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
-                returnResult(latLng);
+                latLngReference.setRef(latLng);
+                popupChoise(latLng);
             }
         });
     }
 
-    private void returnResult(LatLng latLng){
+    private void popupChoise(final LatLng latLng) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+            .setTitle("Opção")
+            .setMessage("Adicionar novo botão")
+            .setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    addLatLng(latLng);
+                }
+            })
+            .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    return;
+                }
+            });
+
+        if(!latLngList.isEmpty()){
+            builder.setNeutralButton("Finalizar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    returnResult();
+                }
+            });
+        }
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void addLatLng(LatLng latLng) {
+        mMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
+        latLngList.add(latLng);
+    }
+
+    private void returnResult() {
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("latLng", latLngList);
+
         Intent result = new Intent();
-        result.putExtra("latLng", latLng);
-        setResult(Activity.RESULT_OK,result);
+        result.putExtras(bundle);
+        setResult(Activity.RESULT_OK, result);
         finish();
     }
 }
