@@ -159,7 +159,7 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
                 //writeAdk("" + GpsNavStatus.MOVE + degrees);
             } else {
                 state = GpsNavStatus.ROTATE;
-                //writeAdk("M");
+
                 //writeAdk("R" + GpsNavStatus.ROTATE + degrees);
             }
         }
