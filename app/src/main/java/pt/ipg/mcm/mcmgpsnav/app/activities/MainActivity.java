@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
@@ -17,6 +18,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
+import android.os.PowerManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -76,8 +78,16 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
 
 
 
+    PowerManager.WakeLock wakeLock;
     @Override
     protected void doOnCreate(Bundle savedInstanceState) {
+        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+
+
+        wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "no sleep");
+        wakeLock.acquire();
+
+
 
         //BLUETOOTH-----------------------------------------
         myUUID = UUID.fromString("ec79da00-853f-11e4-b4a9-0800200c9a66");
@@ -440,6 +450,7 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
     protected void onDestroy() {
         super.onDestroy();
         fluentBD.close();
+        wakeLock.release();
     }
 
     @Override

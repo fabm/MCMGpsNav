@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.access_fine_location"/>
     <uses-feature android:name="android.hardware.usb.accessory"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!--
  The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but are recommended.
