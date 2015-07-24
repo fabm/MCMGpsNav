@@ -20,6 +20,7 @@ import android.os.Handler;
 import android.os.Parcelable;
 import android.os.PowerManager;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -78,15 +79,10 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
 
 
 
-    PowerManager.WakeLock wakeLock;
+
     @Override
     protected void doOnCreate(Bundle savedInstanceState) {
-        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-
-
-        wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "no sleep");
-        wakeLock.acquire();
-
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 
         //BLUETOOTH-----------------------------------------
@@ -450,7 +446,7 @@ public class MainActivity extends AbstractAdkActivity implements LocationListene
     protected void onDestroy() {
         super.onDestroy();
         fluentBD.close();
-        wakeLock.release();
+
     }
 
     @Override
