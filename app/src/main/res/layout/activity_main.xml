@@ -11,14 +11,12 @@
             android:id="@+id/tvCurrentDegrees"
             android:layout_row="0"
             android:layout_column="0"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/btCoordsAndCompass"
-        android:layout_toLeftOf="@+id/btCoordsAndCompass" />
+        android:layout_alignParentTop="true" />
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="latitude"
+            android:text="latitude - Sem GPS"
             android:id="@+id/tvLatitude"
             android:layout_row="0"
             android:layout_column="2"
@@ -26,13 +24,13 @@
         android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/btExportar"
-        android:layout_alignEnd="@+id/btExportar" />
+        android:layout_alignRight="@+id/tgTimer"
+        android:layout_alignEnd="@+id/tgTimer" />
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="longitude"
+            android:text="longitude - Sem GPS"
             android:id="@+id/tvLongitude"
             android:layout_row="0"
             android:layout_column="3"
@@ -40,14 +38,14 @@
         android:layout_below="@+id/tvLatitude"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/btExportar"
-        android:layout_alignEnd="@+id/btExportar" />
+        android:layout_alignRight="@+id/tgTimer"
+        android:layout_alignEnd="@+id/tgTimer" />
 
     <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="latitude next"
-                android:id="@+id/tvMainLatNext"
+                android:text="latitude lago - Sem GPS"
+                android:id="@+id/lblLatLago"
                 android:layout_row="1"
                 android:layout_column="2"
                 android:layout_gravity="center_horizontal"
@@ -55,93 +53,31 @@
         android:layout_below="@+id/textView2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/btExportar"
-        android:layout_alignEnd="@+id/btExportar" />
-
-    <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="longitude next"
-                android:id="@+id/tvMainLonNext"
-                android:layout_row="1"
-                android:layout_column="3"
-                android:layout_gravity="right"
-        android:layout_below="@+id/tvMainLatNext"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/btExportar"
-        android:layout_alignEnd="@+id/btExportar" />
-
-    <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="degrees to next"
-                android:id="@+id/tvMainDegreesToNext"
-                android:layout_row="1"
-                android:layout_column="0"
-                android:layout_gravity="center_horizontal"
-                android:password="false"
-        android:layout_below="@+id/textView4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="distance to next"
-                android:id="@+id/tvMainDistance"
-        android:layout_column="3"
-        android:layout_gravity="right"
-        android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="definir destino"
-                android:id="@+id/btDefDestino"
-                android:layout_row="3"
-                android:layout_column="2"
-                android:layout_gravity="center_horizontal|bottom"
-        android:layout_above="@+id/btCoordsAndCompass"
-        android:layout_alignRight="@+id/btCoordsAndCompass"
-        android:layout_alignEnd="@+id/btCoordsAndCompass" />
-
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="exportar"
-            android:id="@+id/btExportar"
-            android:layout_row="2"
-            android:layout_column="2"
-        android:layout_gravity="right"
-        android:layout_above="@+id/tgTimer"
         android:layout_alignRight="@+id/tgTimer"
         android:layout_alignEnd="@+id/tgTimer" />
 
-    <Button
+    <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lista gravados"
-                android:id="@+id/btCoordsAndCompass"
-        android:layout_row="5"
-                android:layout_column="2"
+                android:text="longitude lago - Sem GPS"
+                android:id="@+id/lblLongLago"
+                android:layout_row="1"
+                android:layout_column="3"
                 android:layout_gravity="right"
-        android:layout_alignTop="@+id/tgTimer"
-        android:layout_toRightOf="@+id/btLimparBd"
-        android:layout_toEndOf="@+id/btLimparBd" />
+        android:layout_below="@+id/lblLatLago"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/tgTimer"
+        android:layout_alignEnd="@+id/tgTimer" />
 
-    <Button
+    <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="limpar bd"
-                android:id="@+id/btLimparBd"
-                android:layout_row="4"
-                android:layout_column="2"
-        android:enabled="true"
-        android:layout_below="@+id/btDefDestino"
+                android:text="distancia ao lago - SemGPS"
+                android:id="@+id/lblDistLago"
+        android:layout_column="3"
+        android:layout_gravity="right"
+        android:layout_below="@+id/textView3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -158,17 +94,8 @@
         android:checked="true"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="MEUS GRAUS"
-        android:id="@+id/lblBearing"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignStart="@+id/textView4" />
+        android:layout_alignParentEnd="true"
+        android:visibility="gone" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -184,7 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="PROXIMO PONTO:"
+        android:text="PONTO LAGO:"
         android:id="@+id/textView2"
         android:layout_below="@+id/tvLongitude"
         android:layout_alignParentLeft="true"
@@ -194,30 +121,113 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="DISTANCIA:"
+        android:text="DISTANCIA DO LAGO:"
         android:id="@+id/textView3"
-        android:layout_below="@+id/tvMainLonNext"
+        android:layout_below="@+id/lblLongLago"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New ToggleButton"
+        android:id="@+id/btnModo"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:checked="false"
+        android:textOn="AUTOMATICO"
+        android:textOff="MANUAL"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btnModo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UP"
+            android:id="@+id/btnUp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LEFT"
+            android:id="@+id/btnLeft"
+            android:layout_alignTop="@+id/btnParar"
+            android:layout_toLeftOf="@+id/btnParar"
+            android:layout_toStartOf="@+id/btnParar" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RIGHT"
+            android:id="@+id/btnRight"
+            android:layout_alignTop="@+id/btnParar"
+            android:layout_toRightOf="@+id/btnParar"
+            android:layout_toEndOf="@+id/btnParar" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PARAR"
+            android:id="@+id/btnParar"
+            android:layout_below="@+id/btnUp"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BACK"
+            android:id="@+id/btnBack"
+            android:layout_below="@+id/btnParar"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnBack"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/info"
+            android:textStyle="bold|italic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/btnRight"
+            android:layout_toStartOf="@+id/btnRight" />
+    </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="GRAUS:"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/tvMainDistance"
-        android:layout_alignLeft="@+id/tvCurrentDegrees"
-        android:layout_alignStart="@+id/tvCurrentDegrees" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="esp"
+        android:id="@+id/lblEspera"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lblDistLago" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="MEU BEARING"
-        android:id="@+id/lblbearing"
-        android:layout_below="@+id/lblBearing"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/lblEstado"
+        android:layout_below="@+id/lblEspera"
+        android:layout_toRightOf="@+id/tgTimer"
+        android:layout_toEndOf="@+id/tgTimer" />
 
 </RelativeLayout>
